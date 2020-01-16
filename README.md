@@ -1,9 +1,8 @@
 # Calculator
-### Simple calculator built on EAN stack
+### UI using Angular JS
 
-Built a simple calculator using:
+Built a UI using:
 
-* [ Express ](https://expressjs.com/) - Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
 * [ AngularJS ](https://angularjs.org/) - based framework. AngularJS lets you extend HTML vocabulary for your application. The resulting environment is extraordinarily expressive, readable, and quick to develop.
 * [ NodeJS ](https://nodejs.org/en/) - Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine for easily building fast, scalable web and network applications.
 
@@ -20,10 +19,10 @@ Built a simple calculator using:
 ### Start in just 4 simple steps!
 
 ##### Get the latest snapshot
-git clone https://github.com/roycodeman/express-calculator.git
+git clone https://github.com/roycodeman/angular_ui.git
 
 ##### Change directory
-cd express-calculator
+cd Cart
 
 ##### Install NPM dependencies
 npm install
