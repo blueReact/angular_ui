@@ -1,0 +1,74 @@
+<div class="btn-go-back">
+  <a href="#!/" class="btn btn-light"><span class="fas fa-arrow-left"></span> Go Back</a>
+</div>
+
+<section class="cart">
+
+  <div class="row">
+
+    <div class="col-md-9 col-sm-12">
+
+      <div class="products d-flex " ng-repeat="item in cartL | orderBy:'category'">
+
+        <div class="product-image col-sm-3 ">
+
+          <img class="card-img-top" ng-src="{{item.img_url}}" alt="Card image cap">
+
+        </div>
+
+        <div class="product-details col-sm-9">
+          <div class="product-description">
+            <p>{{item.name}}</p>
+            <p>
+              <span>{{ item.newPrice | currency:"&#8377;" }}</span>
+              <span style="text-decoration: line-through">{{ item.price }}</span>
+              <span>{{item.discount}}% off</span>
+            </p>
+          </div>
+
+          <div class="product-items ">
+
+            <span class="button-cart-item btn-remove" ng-click="decreaseItemCount(item)" ng-disabled="item.qty<=0">
+              -
+            </span>
+            <input type="number" ng-model="item.qty" class="qty" min="0" required>
+
+            <span class="button-cart-item btn-add" ng-click="increaseItemCount(item)" ng-disabled="item.qty>=10">
+              +
+            </span>
+          </div>
+
+          <div class="product-remove ">
+            <button ng-click="removeItem(item);">Remove</button>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="products products-empty" ng-show="cartL.length === 0">
+        <p>Oops! Nothing found in the cart.
+          Kindly click <a href="#!/">here</a> to add items in your cart.</p>
+      </div>
+
+    </div>
+
+    <div class="col-md-3 col-sm-12">
+      <div class="cart-details">
+        <h2>PRICE DETAILS:</h2>
+
+        <p>Price ( 1 item ): <span>{{ getTotal() | currency:"&#8377;" }}</span></p>
+        <p>Discount: <span>{{ getDiscount() | currency:"&#8377;" }}</span></p>
+
+        <p>Total payable: <span>{{ getNewTotal() | currency:"&#8377;" }}</span></p>
+
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- <button class="btn-danger" ng-click="clearCart();">Clear Cart</button> -->
+<!--<span>{{ item.qty + ' x ' + item.description + ' = ' + (getCost(item) | currency) }}</span>-->
