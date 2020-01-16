@@ -1,4 +1,4 @@
-# Calculator
+# Cart
 ### UI using Angular JS
 
 Built a UI using:
