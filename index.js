@@ -16,6 +16,5 @@ app.use(express.static(path.join(__dirname, "public")));
 
 
 
-app.listen(process.env.PORT || 3000, function () {
-  console.log('App is running on port 3000');
-})
+// listen for requests
+app.listen(process.env.PORT || 3000, () => console.log('Example app listening on port 3000!'))

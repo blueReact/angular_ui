@@ -1,13 +1,11 @@
 {
-  "name": "express-cal",
+  "name": "angular-cart",
   "version": "1.0.0",
-  "description": "express calculator based on REST API",
+  "description": "Angualr cart",
   "main": "index.js",
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "compression": "^1.7.4",
-    "express": "^4.17.1",
-    "express-validator": "^5.3.1" 
+   "compression": "^1.7.4",
+    "express": "^4.17.1"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
@@ -39,8 +37,7 @@
   "keywords": [
     "Node",
     "express",
-    "REST",
-    "calculator"
+    "Anhular"
   ],
   "author": "roycodeman",
   "license": "ISC",
