@@ -1,12 +1,8 @@
 const path = require('path');
 const express = require('express');
 
-var compression = require('compression')
-
 
 const app = express();
-
-app.use(compression());
 
 
 // serving static assets
