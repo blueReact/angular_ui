@@ -3,6 +3,8 @@
 
     <div class="col-md-3 col-sm-12">
       <div class="col-left">
+
+        <!--filter directive -->
         <div class="desktop">
           <filter-directive></filter-directive>
         </div>
@@ -11,8 +13,8 @@
           <div class="mobile-container">
             <div class="button-sort sort">
 
-              <span ng-click="toggleMobileSort = !toggleMobileSort" data-toggle="modal" data-target="#myModal"><span
-                  class="fas fa-sort"></span>Sort</span>
+              <span data-ng-click="toggleMobileSort = !toggleMobileSort" data-toggle="modal"
+                data-target="#myModal"><span class="fas fa-sort"></span>Sort</span>
 
               <!-- The Modal -->
               <div class="modal" id="myModal">
@@ -28,23 +30,23 @@
                     <!-- Modal body -->
                     <div class="modal-body">
                       <label>
-                        <input type="radio" name='foo' ng-model="sortKey" value="-price" />
+                        <input type="radio" name='foo' data-ng-model="sortKey" value="-price" />
                         Price -- high to low
                       </label>
 
                       <label>
-                        <input type="radio" name='foo' ng-model="sortKey" value="price" />
+                        <input type="radio" name='foo' data-ng-model="sortKey" value="price" />
                         Price -- low to high
                       </label>
 
 
                       <label>
-                        <input type="radio" name='foo' ng-model="sortKey" value="-discount" />
+                        <input type="radio" name='foo' data-ng-model="sortKey" value="-discount" />
                         Discount
                       </label>
 
                       <label>
-                        <input type="radio" name='foo' ng-model="sortKey" value="" />
+                        <input type="radio" name='foo' data-ng-model="sortKey" value="" />
                         Clear All
                       </label>
                     </div>
@@ -63,7 +65,7 @@
             </div>
             <div class="button-sort filter">
 
-              <span ng-click="toggleMobileFilter = !toggleMobileFilter" data-toggle="modal"
+              <span data-ng-click="toggleMobileFilter = !toggleMobileFilter" data-toggle="modal"
                 data-target="#myModal1"><span class="fas fa-filter"></span>filter</span>
 
 
@@ -111,37 +113,41 @@
 
         <div class="desktop-sorting">
           <h3>Sort By:
-            <span ng-click="sort('-price');active=1;">
+            <span data-ng-click="sort('-price');active=1;">
               Price -- High Low
-              <span ng-class="{'active': active===1}"></span>
+              <span data-ng-class="{'active': active===1}"></span>
             </span>
-            <span ng-click="sort('price');active=2;">
+            <span data-ng-click="sort('price');active=2;">
               Price -- Low High
-              <span ng-class="{'active': active===2}"></span>
+              <span data-ng-class="{'active': active===2}"></span>
             </span>
-            <span ng-click="sort('-discount');active=3;">
+            <span data-ng-click="sort('-discount');active=3;">
               Discount
-              <span ng-class="{'active': active===3}"></span>
+              <span data-ng-class="{'active': active===3}"></span>
             </span>
-            <span ng-click="sort('');active=4;">
+            <span data-ng-click="sort('');active=4;">
               Clear All
-              <span ng-class="{'active': active===4}"></span>
+              <span data-ng-class="{'active': active===4}"></span>
             </span>
           </h3>
         </div>
 
         <br />
         <div class="row">
-          <div class="spinner" ng-show="loadingSpinner">
-            <span>View is loading...</span>
-            <i class="fa fa-spinner fa-spin"></i>
+          <div class="spinner" data-ng-show="loadingSpinner">
+            <div class="spinner-content">
+              <span>View is loading...</span>
+              <i class="fa fa-spinner fa-spin"></i>
+            </div>
           </div>
-          <div class="col-lg-4 col-md-6 col-sm-12"
-            ng-repeat="item in inventory| filter: searchText | filter:minFilter | filter:maxFilter | orderBy:sortKey">
+          <div class="col-lg-3 col-md-6 col-sm-12"
+            data-ng-repeat="item in inventory| filter: searchText | filter:minFilter | filter:maxFilter | orderBy:sortKey">
 
 
             <div class="card">
-              <img class="card-img-top" ng-src="{{item.img_url}}" alt="Card image cap">
+              <div class="card-item no-image">
+                <img class="card-img-top" data-ng-src="{{item.img_url}}" alt="{{item.name}}" height="275">
+              </div>
               <div class="card-body">
                 <h5 class="card-title">{{item.name}}</h5>
                 <p class="card-text">
@@ -152,7 +158,7 @@
                   <span class="card-discount"> {{item.discount}} % off</span>
                 </p>
                 <div class="pull-center">
-                  <span class="btn btn-warning" ng-click="addItem(item)">Add to cart</span>
+                  <span class="btn btn-warning" data-ng-click="addItem(item)">Add to cart</span>
                 </div>
               </div>
 
@@ -164,7 +170,7 @@
 
         </div>
       </div>
+    </div>
+  </div>
 
 </main>
-
-<!-- <pre>{{item | json}}  </pre> -->

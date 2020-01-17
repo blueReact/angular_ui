@@ -8,12 +8,12 @@
 
     <div class="col-md-9 col-sm-12">
 
-      <div class="products d-flex " ng-repeat="item in cartL | orderBy:'category'">
+      <div class="products d-flex " data-ng-repeat="item in cartL | orderBy:'category'">
 
-        <div class="product-image col-sm-3 ">
-
-          <img class="card-img-top" ng-src="{{item.img_url}}" alt="Card image cap">
-
+        <div class="col-sm-3">
+          <div class="product-image no-image">
+            <img class="card-img-top" data-ng-src="{{item.img_url}}" alt="Card image cap" width="225">
+          </div>
         </div>
 
         <div class="product-details col-sm-9">
@@ -28,25 +28,27 @@
 
           <div class="product-items ">
 
-            <span class="button-cart-item btn-remove" ng-click="decreaseItemCount(item)" ng-disabled="item.qty<=0">
+            <span class="button-cart-item btn-remove" data-ng-click="decreaseItemCount(item)"
+              data-ng-disabled="item.qty<=0">
               -
             </span>
-            <input type="number" ng-model="item.qty" class="qty" min="0" required>
+            <input type="number" data-ng-model="item.qty" class="qty" min="0" required>
 
-            <span class="button-cart-item btn-add" ng-click="increaseItemCount(item)" ng-disabled="item.qty>=10">
+            <span class="button-cart-item btn-add" data-ng-click="increaseItemCount(item)"
+              data-ng-disabled="item.qty>=10">
               +
             </span>
           </div>
 
           <div class="product-remove ">
-            <button ng-click="removeItem(item);">Remove</button>
+            <button data-ng-click="removeItem(item);">Remove</button>
 
           </div>
         </div>
       </div>
 
-      <div class="products products-empty" ng-show="cartL.length === 0">
-        <p>Oops! Nothing found in the cart.
+      <div class="products products-empty" data-ng-show="cartL.length === 0">
+        <p>Oops! your cart is empty.
           Kindly click <a href="#!/">here</a> to add items in your cart.</p>
       </div>
 
@@ -56,7 +58,8 @@
       <div class="cart-details">
         <h2>PRICE DETAILS:</h2>
 
-        <p>Price ( 1 item ): <span>{{ getTotal() | currency:"&#8377;" }}</span></p>
+        <p>Price ( {{getItemCount()}} items ): <span>{{ getTotal() | currency:"&#8377;" }}</span></p>
+
         <p>Discount: <span>{{ getDiscount() | currency:"&#8377;" }}</span></p>
 
         <p>Total payable: <span>{{ getNewTotal() | currency:"&#8377;" }}</span></p>
@@ -70,5 +73,5 @@
 
 
 
-<!-- <button class="btn-danger" ng-click="clearCart();">Clear Cart</button> -->
+<!-- <button class="btn-danger" data-ng-click="clearCart();">Clear Cart</button> -->
 <!--<span>{{ item.qty + ' x ' + item.description + ' = ' + (getCost(item) | currency) }}</span>-->

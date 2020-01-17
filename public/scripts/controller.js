@@ -17,18 +17,23 @@
 
     $scope.loadingSpinner = true;
 
-    setTimeout(function () {
-      $http.get('https://api.myjson.com/bins/qzuzi').then(function (response) {
-        $scope.inventory = response.data;
-        $scope.loadingSpinner = false;
-      }).catch(function () {
-        $scope.loadingSpinner = true;
-      });
-    }, 5000);
+
+    $http.get('https://api.myjson.com/bins/qzuzi').then(function (response) {
+      $scope.inventory = response.data;
+      $scope.loadingSpinner = false;
+    }).catch(function () {
+      $scope.loadingSpinner = true;
+    });
+
 
 
     $scope.cart = sharedData;
 
+    $scope.foo = function (item) {
+
+      return JSON.parse(localStorage.getItem("names"));
+    }
+    $scope.foo();
     $scope.cartL = JSON.parse(localStorage.getItem("names"));
 
     var findItemById = function (items, id) {
@@ -38,7 +43,9 @@
     };
 
     $scope.getCost = function (item) {
+
       return item.qty * item.price;
+
     };
 
     $scope.getNewCost = function (item) {
@@ -64,7 +71,6 @@
         localStorage.setItem("names", JSON.stringify($scope.cart));
       }
 
-
     };
 
     $scope.getTotal = function () {
@@ -74,6 +80,15 @@
 
       return total;
     };
+
+    $scope.getItemCount = function () {
+
+      return _.reduce($scope.cartL, function (sum, item) {
+        return sum + item.qty;
+      }, 0);
+
+    }
+
 
     $scope.getNewTotal = function () {
       var total = _.reduce($scope.cartL, function (sum, item) {
@@ -105,6 +120,7 @@
     // };
 
     $scope.removeItem = function (item) {
+      console.log(item);
       var index = $scope.cartL.indexOf(item);
       $scope.cartL.splice(index, 1);
       $scope.cart.splice(index, 1);

@@ -18,12 +18,26 @@ p {
 }
 
 .spinner {
-  position: absolute;
-  left: 50%;
-  margin-left: -100px;
-  top: 50%;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
   text-align: center;
   margin-bottom: 10px;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+}
+
+.spinner-content {
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  margin-left: -50px;
+  margin-top: -25px;
+  color: #ffffff;
 }
 
 .spinner span {
@@ -32,6 +46,14 @@ p {
 
 .spinner i {
   font-size: 24px;
+}
+
+.no-image {
+
+  min-height: 275px;
+  background: #f7f4f4 url('../images/placeholder.png') no-repeat center center;
+  background-size: contain;
+
 }
 
 header {
@@ -73,6 +95,7 @@ header {
 }
 
 .cart .cart-count {
+  display: none;
   position: absolute;
   background-color: #ff0000;
   color: #ffffff;
@@ -85,6 +108,10 @@ header {
   line-height: 20px;
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.cart .cart-count.show {
+  display: block !important;
 }
 
 .col-left .mobile {
@@ -112,6 +139,7 @@ header {
   font-size: 14px;
   padding: 0 20px;
   position: relative;
+  cursor: pointer;
 }
 
 .col-right h3 span>span.active {
@@ -143,17 +171,21 @@ span.true {
 }
 
 .cart .products .product-image img {
-  width: 100px;
+  width: 100%;
 }
 
 .cart .products {
-  padding: 10px;
+  padding: 30px 15px;
   border: 1px solid #555555;
   margin-bottom: 15px;
   display: flex;
   width: 100%;
   align-content: center;
   min-height: 187px;
+}
+
+.product-image>img {
+  width: 100%
 }
 
 .products-empty {
@@ -236,21 +268,28 @@ span.true {
   border: 0;
 }
 
+
+
+.card-item>img {
+  height: 100%;
+}
+
 .card-new-price {
   font-weight: 500;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .card-old-price {
   text-decoration: line-through;
   color: #555555;
-  padding: 0 5px;
+  padding: 0 3px;
+  font-size: 13px;
 }
 
 .card-discount {
   color: green;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .card-text {
