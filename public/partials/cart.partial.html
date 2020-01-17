@@ -1,5 +1,5 @@
 <div class="btn-go-back">
-  <a href="#!/" class="btn btn-light"><span class="fas fa-arrow-left"></span> Go Back</a>
+  <a href="/" class="btn btn-light"><span class="fas fa-arrow-left"></span> Go Back</a>
 </div>
 
 <section class="cart">
@@ -10,13 +10,13 @@
 
       <div class="products d-flex " data-ng-repeat="item in cartL | orderBy:'category'">
 
-        <div class="col-sm-3">
+        <div class="col-md-3 col-sm-4">
           <div class="product-image no-image">
             <img class="card-img-top" data-ng-src="{{item.img_url}}" alt="Card image cap" width="225">
           </div>
         </div>
 
-        <div class="product-details col-sm-9">
+        <div class="product-details col-md-9 col-sm-8">
           <div class="product-description">
             <p>{{item.name}}</p>
             <p>

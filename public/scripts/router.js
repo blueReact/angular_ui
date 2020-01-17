@@ -3,9 +3,12 @@ angular
   .module('myApp')
   .config(config);
 
-config.$inject = ['$routeProvider'];
+config.$inject = ['$routeProvider', '$locationProvider'];
 
-function config($routeProvider) {
+function config($routeProvider, $locationProvider) {
+
+  // use the HTML5 History API
+  $locationProvider.html5Mode(true);
 
   $routeProvider
     .when("/", {
