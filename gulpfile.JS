@@ -15,7 +15,7 @@ var paths = {
   src: 'public/**/*',
   srcHTML: 'public/**/*.html',
   srcCSS: ['public/styles/style.global.css','public/partials/**/*.css','public/styles/style.responsive.css'],
-  srcJS: ['public/**/module.js', 'public/**/controller.js', 'public/**/router.js'],
+  srcJS: ['public/**/module.js', 'public/**/controller.js','public/**/service.js', 'public/**/directive.js', 'public/**/router.js'],
   dist: 'dist',
   distIndex: 'dist/index.html',
   distCSS: ['dist/**/style.min.css'],

@@ -1,30 +1,35 @@
-// route-config.js
-angular
-  .module('myApp')
-  .config(config);
+(function () {
+  'use strict';
 
-config.$inject = ['$routeProvider'];
+  // route-config.js
+  angular
+    .module('myApp')
+    .config(config);
 
-function config($routeProvider) {
+  config.$inject = ['$routeProvider'];
 
-  $routeProvider
+  function config($routeProvider) {
 
-    // Home page
-    .when("/", {
-      templateUrl: "partials/home/home.partial.html",
-      controller: 'mainController'
-    })
+    $routeProvider
 
-    // Cart Page
-    .when("/cart", {
-      templateUrl: "partials/cart/cart.partial.html",
-      controller: 'mainController'
-    })
+      // Home page
+      .when("/", {
+        templateUrl: "partials/home/home.partial.html",
+        controller: 'mainController'
+      })
 
-    // 404 route
-    .otherwise({
-      templateUrl: 'partials/404.partial.html',
-      controller: 'mainController'
-    });
+      // Cart Page
+      .when("/cart", {
+        templateUrl: "partials/cart/cart.partial.html",
+        controller: 'mainController'
+      })
 
-}
+      // 404 route
+      .otherwise({
+        templateUrl: 'partials/404.partial.html',
+        controller: 'mainController'
+      });
+
+  }
+
+})();

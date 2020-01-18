@@ -5,14 +5,11 @@
   angular
     .module('myApp')
     .controller('mainController', mainController)
-    .directive('filterDirective', filterDirective)
     .factory('sharedData', function () {
       return [];
-    })
-    .factory('httpGetEndPoint', httpGetEndPoint);
+    });
 
   mainController.$inject = ['$scope', 'sharedData', 'httpGetEndPoint'];
-  httpGetEndPoint.$inject = ['$http'];
 
   function mainController($scope, sharedData, httpGetEndPoint) {
 
@@ -157,27 +154,5 @@
     $scope.toggleMobileFilter = true;
 
   };
-
-  function httpGetEndPoint($http) {
-    return {
-      data: data
-    }
-
-    function data() {
-      return $http.get('https://api.myjson.com/bins/qzuzi')
-    }
-  }
-
-  function filterDirective() {
-
-    return {
-      restrict: "E",
-      template: `  <rzslider rz-slider-floor="priceSlider.floor" rz-slider-ceil="priceSlider.ceil"
-      rz-slider-model="priceSlider.min" rz-slider-high="priceSlider.max" rz-slider-step="{{priceSlider.step}}">
-    </rzslider><label>Price</label>`
-    }
-  }
-
-
 
 })();
