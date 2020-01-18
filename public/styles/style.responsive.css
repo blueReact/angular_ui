@@ -1,0 +1,74 @@
+/**
+ * CONTENTS
+ *
+ * COMPONENT
+ * RESPONSIVE..............For devices.
+ *
+ */
+
+/*------------------------------------*\
+  #RESPONSIVE
+\*------------------------------------*/
+
+@media screen and (max-width: 768px) {
+
+  .desktop {
+    display: none;
+  }
+
+  .col-left .mobile {
+    display: block;
+  }
+
+  .col-right {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .sort .hide {
+    display: none;
+  }
+
+  .sort .modal label {
+    display: block;
+    text-align: left;
+  }
+
+  .mobile-container {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .mobile-container>.button-sort {
+    padding: 10px;
+    font-size: 25px;
+    color: #555555;
+    display: table-cell;
+    text-align: center;
+    border: 1px solid #ddd;
+  }
+
+  .card {
+    width: 100% !important;
+    margin-bottom: 15px;
+  }
+
+  .desktop-sorting {
+    display: none;
+  }
+
+  .product-details {
+    flex-direction: column;
+  }
+
+  .product-description>p:first-child {
+    margin-bottom: 10px;
+  }
+
+  .product-details>div {
+    width: 100%;
+
+  }
+
+}

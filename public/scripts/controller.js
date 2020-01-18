@@ -1,24 +1,25 @@
 (function () {
   "use strict";
 
-  // articles.controller.js
+  // cart.controller.js
   angular
     .module('myApp')
     .controller('mainController', mainController)
     .directive('filterDirective', filterDirective)
     .factory('sharedData', function () {
       return [];
-    });
+    })
+    .factory('httpGetEndPoint', httpGetEndPoint);
 
-  mainController.$inject = ['$scope', 'sharedData', '$http', '$filter'];
+  mainController.$inject = ['$scope', 'sharedData', 'httpGetEndPoint'];
+  httpGetEndPoint.$inject = ['$http'];
 
-
-  function mainController($scope, sharedData, $http, $filter) {
+  function mainController($scope, sharedData, httpGetEndPoint) {
 
     $scope.loadingSpinner = true;
+    $scope.cart = sharedData;
 
-
-    $http.get('https://api.myjson.com/bins/qzuzi').then(function (response) {
+    httpGetEndPoint.data().then(function (response) {
       $scope.inventory = response.data;
       $scope.loadingSpinner = false;
     }).catch(function () {
@@ -26,14 +27,12 @@
     });
 
 
-
-    $scope.cart = sharedData;
-
-    $scope.foo = function (item) {
+    $scope.getItemNames = function (item) {
 
       return JSON.parse(localStorage.getItem("names"));
     }
-    $scope.foo();
+    $scope.getItemNames();
+
     $scope.cartL = JSON.parse(localStorage.getItem("names"));
 
     var findItemById = function (items, id) {
@@ -107,20 +106,8 @@
     };
 
 
-    // $scope.getTotal = function () {
-    //   var total = _.reduce($scope.cart, function (sum, item) {
-    //     return sum + $scope.getCost(item);
-    //   }, 0);
-    //   console.log('total: ' + total);
-    //   return total;
-    // };
-
-    // $scope.clearCart = function () {
-    //   $scope.cart.length = 0;
-    // };
-
     $scope.removeItem = function (item) {
-      console.log(item);
+
       var index = $scope.cartL.indexOf(item);
       $scope.cartL.splice(index, 1);
       $scope.cart.splice(index, 1);
@@ -171,11 +158,21 @@
 
   };
 
+  function httpGetEndPoint($http) {
+    return {
+      data: data
+    }
+
+    function data() {
+      return $http.get('https://api.myjson.com/bins/qzuzi')
+    }
+  }
+
   function filterDirective() {
 
     return {
       restrict: "E",
-      template: `  <rzslider rz-slider-floor="priceSlider.floor"                    rz-slider-ceil="priceSlider.ceil"
+      template: `  <rzslider rz-slider-floor="priceSlider.floor" rz-slider-ceil="priceSlider.ceil"
       rz-slider-model="priceSlider.min" rz-slider-high="priceSlider.max" rz-slider-step="{{priceSlider.step}}">
     </rzslider><label>Price</label>`
     }

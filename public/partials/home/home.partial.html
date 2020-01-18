@@ -30,23 +30,23 @@
                     <!-- Modal body -->
                     <div class="modal-body">
                       <label>
-                        <input type="radio" name='foo' data-ng-model="sortKey" value="-price" />
+                        <input type="radio" name='sort' data-ng-model="sortKey" value="-price" />
                         Price -- high to low
                       </label>
 
                       <label>
-                        <input type="radio" name='foo' data-ng-model="sortKey" value="price" />
+                        <input type="radio" name='sort' data-ng-model="sortKey" value="price" />
                         Price -- low to high
                       </label>
 
 
                       <label>
-                        <input type="radio" name='foo' data-ng-model="sortKey" value="-discount" />
+                        <input type="radio" name='sort' data-ng-model="sortKey" value="-discount" />
                         Discount
                       </label>
 
                       <label>
-                        <input type="radio" name='foo' data-ng-model="sortKey" value="" />
+                        <input type="radio" name='sort' data-ng-model="sortKey" value="" />
                         Clear All
                       </label>
                     </div>
@@ -113,21 +113,21 @@
 
         <div class="desktop-sorting">
           <h3>Sort By:
-            <span data-ng-click="sort('-price');active=1;">
+            <span data-ng-click="sort('-price');active=1;" data-ng-class="{'active': active===1}">
               Price -- High Low
-              <span data-ng-class="{'active': active===1}"></span>
+              <span></span>
             </span>
-            <span data-ng-click="sort('price');active=2;">
+            <span data-ng-click="sort('price');active=2;" data-ng-class="{'active': active===2}">
               Price -- Low High
-              <span data-ng-class="{'active': active===2}"></span>
+              <span></span>
             </span>
-            <span data-ng-click="sort('-discount');active=3;">
+            <span data-ng-click="sort('-discount');active=3;" data-ng-class="{'active': active===3}">
               Discount
-              <span data-ng-class="{'active': active===3}"></span>
+              <span></span>
             </span>
-            <span data-ng-click="sort('');active=4;">
+            <span data-ng-click="sort('');active=4;" data-ng-class="{'active': active===4}">
               Clear All
-              <span data-ng-class="{'active': active===4}"></span>
+              <span></span>
             </span>
           </h3>
         </div>
@@ -143,7 +143,6 @@
           <div class="col-lg-3 col-md-6 col-sm-12"
             data-ng-repeat="item in inventory| filter: searchText | filter:minFilter | filter:maxFilter | orderBy:sortKey">
 
-
             <div class="card">
               <div class="card-item no-image">
                 <img class="card-img-top" data-ng-src="{{item.img_url}}" alt="{{item.name}}" height="275">
@@ -158,7 +157,7 @@
                   <span class="card-discount"> {{item.discount}} % off</span>
                 </p>
                 <div class="pull-center">
-                  <span class="btn btn-warning" data-ng-click="addItem(item)">Add to cart</span>
+                  <button class="btn btn-warning" data-ng-click="addItem(item);">Add to cart</button>
                 </div>
               </div>
 

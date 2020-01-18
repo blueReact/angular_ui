@@ -1,0 +1,19 @@
+<header>
+
+  <!-- logo -->
+  <a href="/"><img data-ng-src="images/logo.png" width="38" height="42" alt="website logo"></a>
+
+  <!-- header right-->
+  <div class="header-right">
+
+    <input type="text" data-ng-model="searchText" data-ng-class="{'hide' : toggle}">
+    <span data-ng-click="toggle = !toggle" class="custom-icon fas fa-search"></span>
+    <a href="#!/cart" class="custom-icon cart fas fa-luggage-cart">
+      <span ng-show="{{ show = getItemNames().length > 0 }}" data-ng-class="{'show' : show}"
+        class="cart-count">{{getItemNames().length}}</span>
+    </a>
+
+  </div>
+  <!-- ./header right-->
+
+</header>

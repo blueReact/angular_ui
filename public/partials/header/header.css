@@ -1,0 +1,36 @@
+/**
+ * CONTENTS
+ *
+ * COMPONENT
+ * HEADER............The main page header.
+ *
+ */
+
+
+/*------------------------------------*\
+  #HEADER
+\*------------------------------------*/
+
+header {
+  height: 60px;
+  background-color: #436df0;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 25px;
+  align-items: center;
+}
+
+header .header-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+header .header-right>* {
+  padding-left: 15px;
+}
+
+header .header-right .hide {
+  display: none;
+}

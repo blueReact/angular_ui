@@ -3,30 +3,28 @@ angular
   .module('myApp')
   .config(config);
 
-config.$inject = ['$routeProvider', '$locationProvider'];
+config.$inject = ['$routeProvider'];
 
-function config($routeProvider, $locationProvider) {
-
-  // use the HTML5 History API
-  $locationProvider.html5Mode(true);
+function config($routeProvider) {
 
   $routeProvider
+
+    // Home page
     .when("/", {
-      templateUrl: "partials/home.partial.html",
-      controller: 'mainController',
-      controllerAs: 'vm'
+      templateUrl: "partials/home/home.partial.html",
+      controller: 'mainController'
     })
 
+    // Cart Page
     .when("/cart", {
-      templateUrl: "partials/cart.partial.html",
-      controller: 'mainController',
-      controllerAs: 'vm'
+      templateUrl: "partials/cart/cart.partial.html",
+      controller: 'mainController'
     })
 
+    // 404 route
     .otherwise({
       templateUrl: 'partials/404.partial.html',
-      controller: 'mainController',
-      controllerAs: 'vm'
+      controller: 'mainController'
     });
 
 }

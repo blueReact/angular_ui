@@ -1,0 +1,67 @@
+/**
+ * CONTENTS
+ *
+ * COMPONENT
+ * HOME .............The main page
+ *
+ */
+
+/*------------------------------------*\
+  #HOME
+\*------------------------------------*/
+
+.col-left .mobile {
+  display: none;
+}
+
+.rzslider+label {
+  display: block;
+  text-align: center;
+}
+
+.col-right {
+  border-left: 1px solid #dddddd;
+  height: 100%;
+  width: 100%;
+  padding-left: 30px;
+  min-height: 100vh;
+}
+
+.col-right h3 {
+  font-size: 18px;
+}
+
+.col-right h3>span {
+  font-size: 14px;
+  padding: 0 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+.col-right h3>span:hover {
+  color: #436df0;
+}
+
+.col-right h3 span.active {
+  color: #436df0;
+}
+
+.col-right h3 span.active>span {
+  background-color: #436df0;
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  animation: border-animate .50s ease-in-out;
+}
+
+@keyframes border-animate {
+  from {
+    bottom: -15px;
+  }
+
+  to {
+    bottom: -10px;
+  }
+}

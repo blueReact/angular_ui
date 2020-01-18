@@ -14,7 +14,7 @@ var changed = require('gulp-changed');
 var paths = {
   src: 'public/**/*',
   srcHTML: 'public/**/*.html',
-  srcCSS: ['public/styles/*.css'],
+  srcCSS: ['public/styles/style.global.css','public/partials/**/*.css','public/styles/style.responsive.css'],
   srcJS: ['public/**/module.js', 'public/**/controller.js', 'public/**/router.js'],
   dist: 'dist',
   distIndex: 'dist/index.html',
@@ -76,12 +76,10 @@ gulp.task('html', function () {
 gulp.task('css', function () {
   return gulp.src(paths.srcCSS)
     .pipe(changed(paths.dist))
-    //.pipe(sourcemaps.init())
     .pipe(concat('styles/style.min.css'))
     .pipe(cleanCSS({
       compatibility: 'ie8'
     }))
-    //.pipe(sourcemaps.write())
     .pipe(gulp.dest(paths.dist));
 });
 
