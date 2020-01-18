@@ -83,15 +83,15 @@
 
 </head>
 
-<body ng-app="myApp" ng-strict-di>
+<body data-ng-app="myApp" data-ng-strict-di>
 
-  <div ng-cloak ng-controller="mainController">
+  <div data-ng-cloak ng-controller="mainController">
 
-    <div ng-include="'partials/header/header.partial.html'"></div>
+    <div data-ng-include="'partials/header/header.partial.html'"></div>
 
-    <div ng-view class="container-fluid view"></div>
+    <div data-ng-view class="container-fluid view"></div>
 
-    <div ng-include="'partials/footer/footer.partial.html'"></div>
+    <div data-ng-include="'partials/footer/footer.partial.html'"></div>
 
   </div>
 
@@ -138,7 +138,7 @@
             <div class="card-body">
               <p class="card-text">We're sorry, but sample website doesn't work properly without JavaScript enabled.
                 Kindly enable JavaScript and reload this page again.</p>
-              <a href="#" class="btn btn-primary" href="#">Reload Page</a>
+              <a href="#" class="btn btn-primary">Reload Page</a>
             </div>
           </div>
         </div>
