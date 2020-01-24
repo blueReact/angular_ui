@@ -24,9 +24,9 @@
     });
 
 
-    $scope.getItemNames = function (item) {
+    $scope.getItemNames = function () {
 
-      return JSON.parse(localStorage.getItem("names"));
+      return JSON.parse(localStorage.getItem("cartItemsCount"));
     }
     $scope.getItemNames();
 
@@ -53,18 +53,33 @@
     };
 
     $scope.addItem = function (itemToAdd) {
-
-
+     
+      console.log(itemToAdd)
       itemToAdd.qty = 1; // adding one by default
       itemToAdd.newPrice = itemToAdd.price - (itemToAdd.discount / 100 * itemToAdd.price)
       itemToAdd.discountValue = itemToAdd.price - itemToAdd.newPrice
 
       var found = findItemById($scope.cart, itemToAdd.id);
+      
       if (found) {
         found.qty += itemToAdd.qty;
+        console.log(found.qty)
+
+        var items = JSON.parse(localStorage.getItem("names"));
+        
+        for (var i = 0; i < items.length; i++) {
+          if (items[i].id === itemToAdd.id) {
+            console.log(true)
+            items[i].qty = found.qty
+            localStorage.setItem("names", JSON.stringify(items));
+            $scope.cartCounter(found.qty);
+          }
+
+        }
       } else {
         $scope.cart.push(angular.copy(itemToAdd));
         localStorage.setItem("names", JSON.stringify($scope.cart));
+        $scope.cartCounter($scope.cart);
       }
 
     };
@@ -108,18 +123,51 @@
       var index = $scope.cartL.indexOf(item);
       $scope.cartL.splice(index, 1);
       $scope.cart.splice(index, 1);
+
+      var temp = JSON.parse(localStorage.getItem("cartItemsCount"));
+      let qty = item.qty;
+     
+      var result = temp - qty;
+      
+      localStorage.setItem('cartItemsCount', JSON.stringify(result));
       localStorage.setItem('names', JSON.stringify($scope.cartL));
 
     };
+    
+    $scope.cartCounter = function (item) {
+      console.log(item)
+      var temp = JSON.parse(localStorage.getItem('names'));
+      for (var i = 0; i < temp.length; i++) {
+        console.log(temp[i].id == item.id)
 
+        if (temp[i].id == item.id) {
+          temp[i].qty = item.qty
+        }
+      }
+
+      let result = temp.map(a => a.qty);
+      var cartL = result.reduce((a, b) => a + b);
+
+      localStorage.setItem('cartItemsCount', JSON.stringify(cartL));
+      //localStorage.setItem('names', JSON.stringify(temp));
+    }
 
     $scope.increaseItemCount = function (item) {
+      console.log(item);
       item.qty++;
+      $scope.cartCounter(item);
+
+      $scope.getItemNames();
+
     };
 
     $scope.decreaseItemCount = function (item) {
       if (item.qty > 0) {
         item.qty--;
+
+        $scope.cartCounter(item);
+        $scope.getItemNames();
+
       } else {
         return 0;
       }
